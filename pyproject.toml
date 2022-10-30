@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "nonblocking-io"
+version = "0.1.0"
+description = "A convenient abstraction for non-blocking io coroutines"
+authors = ["Valss22 <valsshokorov@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+nest-asyncio = "^1.5.6"
+
+[tool.poetry.dev-dependencies]
+black = "^22.10.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
