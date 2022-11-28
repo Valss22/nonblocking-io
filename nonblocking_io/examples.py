@@ -1,5 +1,5 @@
 import asyncio
-from eventloop import nonblock
+from utils import nonblock
 from fastapi import FastAPI
 
 
@@ -14,6 +14,12 @@ async def task_2(msg: str) -> None:
 
 
 app = FastAPI()
+
+
+@app.on_event("startup")
+async def startup():
+    nonblock(task_1, "task_1")
+    nonblock(task_2, "task_2")
 
 
 @app.post("/user/")
