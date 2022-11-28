@@ -1,10 +1,10 @@
 import asyncio
 from utils import nonblock
 from fastapi import FastAPI
+import schedule
 
 
-async def task_1(msg: str) -> None:
-    await asyncio.sleep(2)
+def task_1(msg: str) -> None:
     print(msg)
 
 
@@ -18,8 +18,12 @@ app = FastAPI()
 
 @app.on_event("startup")
 async def startup():
-    nonblock(task_1, "task_1")
-    nonblock(task_2, "task_2")
+    ...
+    # schedule.every(2).seconds.do(task_1, "task_1")
+
+    # while True:
+    #     schedule.run_pending()
+    #     await asyncio.sleep(0.1)
 
 
 @app.post("/user/")
